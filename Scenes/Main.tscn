@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b478llry8oy0q"]
+
+[ext_resource type="PackedScene" uid="uid://p4vutke6tuxf" path="res://Scenes/Player/Player.tscn" id="1_naugm"]
+[ext_resource type="Script" path="res://Source/LevelManager.cs" id="2_2pvom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clri7"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_naugm")]
+position = Vector2(7397, 476)
+
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("2_2pvom")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LevelManager"]
+
+[node name="Panel" type="Panel" parent="LevelManager/CanvasLayer"]
+offset_left = -437.0
+offset_top = -276.0
+offset_right = 1738.06
+offset_bottom = 1047.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_clri7")
