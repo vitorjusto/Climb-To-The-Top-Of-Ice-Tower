@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddo2y0harkn6v"]
+[gd_scene load_steps=4 format=3 uid="uid://ddo2y0harkn6v"]
 
 [ext_resource type="PackedScene" uid="uid://buvcnqoc57y7c" path="res://Scenes/Tiles/Tiles.tscn" id="1_6wxt8"]
 [ext_resource type="PackedScene" uid="uid://bv0dr2ay7k82r" path="res://Scenes/Spawner.tscn" id="2_umlhy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4aff"]
+radius = 181.0
+height = 362.0
 
 [node name="Act1" type="Node2D"]
 
@@ -10,3 +14,11 @@ layer_0/tile_data = PackedInt32Array(1310755, 0, 0, 1245219, 0, 0, 1179683, 0, 0
 
 [node name="Spawner" parent="." instance=ExtResource("2_umlhy")]
 position = Vector2(104, 426)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(691, 499)
+shape = SubResource("CapsuleShape2D_p4aff")

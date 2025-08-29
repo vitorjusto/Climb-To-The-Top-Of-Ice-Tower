@@ -5,13 +5,11 @@ namespace IceGame.Source.States
     public class ScreenTransitionStartState : IState
     {
         private Panel _screen;
-        private Vector2 _startPosition;
-        private float _speed = 2000;
+        private float _speed = 5000;
 
         public ScreenTransitionStartState(Panel screen)
         {
             _screen = screen;
-            _startPosition = new Vector2(-2303, -265);
         }
 
         public bool Process(double delta)

@@ -9,16 +9,17 @@ bg_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_naugm")]
-position = Vector2(7397, 476)
+position = Vector2(148, 234)
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("2_2pvom")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelManager"]
+layer = 100
 
 [node name="Panel" type="Panel" parent="LevelManager/CanvasLayer"]
-offset_left = -437.0
-offset_top = -276.0
-offset_right = 1738.06
-offset_bottom = 1047.0
+offset_left = -3656.0
+offset_top = -1410.0
+offset_right = 2929.0
+offset_bottom = 1900.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_clri7")

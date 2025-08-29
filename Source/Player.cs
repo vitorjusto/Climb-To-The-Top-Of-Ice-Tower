@@ -44,5 +44,8 @@ namespace IceGame.Source
             Velocity = velocity;
             MoveAndSlide();
         }
+
+        public void OnAreaDetected(Area2D area)
+            => LevelManager.GetManager().StartDeathTransition();
     }
 }
