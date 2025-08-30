@@ -1,6 +1,5 @@
 using Godot;
 using IceGame.Source.States;
-using System;
 using System.Collections.Generic;
 
 namespace IceGame.Source
@@ -8,6 +7,8 @@ namespace IceGame.Source
     public partial class LevelManager : Node2D
     {
         private StateHandler _deathLoadHandler;
+        private StateHandler _levelTransitionHandler;
+        private readonly LevelSpwanData _spawnData = new(0, "res://Scenes/Levels/Act1.tscn");
         public Node2D CurrentLevel;
 
         private static LevelManager _manager;
@@ -26,16 +27,34 @@ namespace IceGame.Source
             };
             _deathLoadHandler = new(list1);
             _deathLoadHandler.StartProcess();
+
+            
+            var list2 = new List<IState>()
+            {
+                new ScreenTransitionStartState(GetNode<Panel>("CanvasLayer/Panel")),
+                new LevelLoadState(_spawnData, this),
+                new ScreenTransitionEndingState(GetNode<Panel>("CanvasLayer/Panel"))
+
+            };
+            _levelTransitionHandler = new(list2);
         }
 
         public override void _Process(double delta)
         {
             _deathLoadHandler.Process(delta);
+            _levelTransitionHandler.Process(delta);
         }
 
         public void StartDeathTransition()
         {
             _deathLoadHandler.StartProcess();
+        }
+
+        public void StartLevelTransition(int id, string path)
+        {
+            _spawnData.Id = id;
+            _spawnData.LevelPath = path;
+            _levelTransitionHandler.StartProcess();
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Godot;
 namespace IceGame.Source.States
 {
@@ -14,7 +13,6 @@ namespace IceGame.Source.States
 
         public bool Process(double delta)
         {
-            GD.Print(_screen.Position);
             _screen.Position += new Vector2(_speed, 0) * (float)delta;
 
             return _screen.Position.X > -462;

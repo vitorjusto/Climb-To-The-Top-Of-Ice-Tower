@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using Godot;
 
 namespace IceGame.Source
@@ -9,6 +11,7 @@ namespace IceGame.Source
         public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
         private static Player _player;
+        private bool _isDebug = false;
         public static Player GetPlayer()
             => _player;
 
@@ -19,6 +22,22 @@ namespace IceGame.Source
 
         public override void _PhysicsProcess(double delta)
         {
+
+#if DEBUG
+            //TODO: remove debug mode        
+            if(Input.IsActionJustPressed("DebugMode"))
+            {
+                _isDebug = !_isDebug;
+                GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D").Disabled = _isDebug;
+                Velocity = Vector2.Zero;
+            }
+
+            if(_isDebug)
+            {
+                HandleDebugControls();
+                return;
+            }
+#endif
             Vector2 velocity = Velocity;
 
             // Add the gravity.
@@ -45,7 +64,15 @@ namespace IceGame.Source
             MoveAndSlide();
         }
 
+        private void HandleDebugControls()
+        {
+            Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+            this.Position += direction * 10;
+        }
+
         public void OnAreaDetected(Area2D area)
+            => LevelManager.GetManager().StartDeathTransition();
+        public void OnBodyDetected(Node2D node)
             => LevelManager.GetManager().StartDeathTransition();
     }
 }
