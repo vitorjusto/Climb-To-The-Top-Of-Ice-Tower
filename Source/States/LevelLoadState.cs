@@ -20,6 +20,7 @@ namespace IceGame.Source.States
 
         public bool Process(double delta)
         {
+            _manager.CurrentLevel?.CallDeferred("queue_free");
             var scene = GD.Load<PackedScene>(LevelData.LevelPath);
             var level = scene.Instantiate<Node2D>();
 

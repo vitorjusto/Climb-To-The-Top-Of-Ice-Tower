@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnklh1j8dm15a"]
+
+[ext_resource type="Script" path="res://Source/MovingPlataform.cs" id="1_xq6cw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t32df"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujq0n"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tkci"]
+size = Vector2(112, 8)
+
+[node name="MovingPlataform" type="Node2D"]
+script = ExtResource("1_xq6cw")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t32df")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ujq0n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -68)
+shape = SubResource("RectangleShape2D_5tkci")
+debug_color = Color(0, 1, 0.701961, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="OnPlayerDetected"]
