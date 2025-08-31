@@ -21,7 +21,7 @@ namespace IceGame.Source
             var list1 = new List<IState>()
             {
                 new ScreenTransitionStartState(GetNode<Panel>("CanvasLayer/Panel")),
-                new LevelLoadState(new LevelSpwanData(0, "res://Scenes/Levels/Act1.tscn"), this),
+                new LevelLoadState(new LevelSpwanData(2, "res://Scenes/Levels/Act2.tscn"), this),
                 new ScreenTransitionEndingState(GetNode<Panel>("CanvasLayer/Panel"))
 
             };
@@ -56,5 +56,8 @@ namespace IceGame.Source
             _spawnData.LevelPath = path;
             _levelTransitionHandler.StartProcess();
         }
+
+        public void AddChildOnLevel(Node2D node)
+            => CurrentLevel.AddChild(node);
     }
 }

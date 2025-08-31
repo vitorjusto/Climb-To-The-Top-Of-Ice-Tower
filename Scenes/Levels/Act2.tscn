@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgdfavet6q15q"]
+[gd_scene load_steps=19 format=3 uid="uid://dgdfavet6q15q"]
 
 [ext_resource type="PackedScene" uid="uid://buvcnqoc57y7c" path="res://Scenes/Tiles/Tiles.tscn" id="1_el1o1"]
 [ext_resource type="PackedScene" uid="uid://bv0dr2ay7k82r" path="res://Scenes/Spawner.tscn" id="2_s0tnm"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jhml08xxbe00" path="res://Scenes/CameraBlocker.tscn" id="7_pp537"]
 [ext_resource type="PackedScene" uid="uid://cymwkbpcpxyso" path="res://Scenes/Warpzone.tscn" id="8_ncdug"]
 [ext_resource type="PackedScene" uid="uid://c78cq0bd1h2ie" path="res://Scenes/FragileBlock.tscn" id="9_mpfc1"]
+[ext_resource type="PackedScene" uid="uid://d1nhqpcf08e3b" path="res://Scenes/Enemies/IceWizard.tscn" id="10_827px"]
 
 [sub_resource type="Curve2D" id="Curve2D_udcuc"]
 _data = {
@@ -665,3 +666,6 @@ position = Vector2(1136, -3520)
 
 [node name="FragileBlock8" parent="." instance=ExtResource("9_mpfc1")]
 position = Vector2(1104, -3520)
+
+[node name="IceWizard" parent="." instance=ExtResource("10_827px")]
+position = Vector2(2704, -3576)

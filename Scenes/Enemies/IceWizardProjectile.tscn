@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://qqoeao2nnv8"]
+
+[ext_resource type="Script" path="res://Source/Models/Enemies/IceWizardProjectile.cs" id="1_7chkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ku80"]
+size = Vector2(64, 48)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5oov"]
+
+[node name="IceWizardProjectile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_7chkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ku80")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m5oov")
