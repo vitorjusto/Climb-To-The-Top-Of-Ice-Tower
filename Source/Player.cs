@@ -36,6 +36,9 @@ namespace IceGame.Source
                 HandleDebugControls();
                 return;
             }
+            
+            if(Input.IsActionJustPressed("AutoDeath"))
+                LevelManager.GetManager().StartDeathTransition();
 #endif
             Vector2 velocity = Velocity;
 

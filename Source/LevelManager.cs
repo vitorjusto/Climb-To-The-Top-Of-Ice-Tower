@@ -21,7 +21,7 @@ namespace IceGame.Source
             var list1 = new List<IState>()
             {
                 new ScreenTransitionStartState(GetNode<Panel>("CanvasLayer/Panel")),
-                new LevelLoadState(new LevelSpwanData(0, "res://Scenes/Levels/Act3.tscn"), this),
+                new LevelLoadState(new LevelSpwanData(2, "res://Scenes/Levels/Act2.tscn"), this),
                 new ScreenTransitionEndingState(GetNode<Panel>("CanvasLayer/Panel"))
 
             };
