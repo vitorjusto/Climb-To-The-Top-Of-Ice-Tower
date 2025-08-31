@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cymwkbpcpxyso"]
+
+[ext_resource type="Script" path="res://Source/Warpzone.cs" id="1_tytb2"]
+
+[node name="Warpzone" type="Area2D"]
+script = ExtResource("1_tytb2")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerDetected"]

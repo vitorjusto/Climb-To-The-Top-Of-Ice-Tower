@@ -1,10 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://p4vutke6tuxf"]
+[gd_scene load_steps=8 format=3 uid="uid://p4vutke6tuxf"]
 
 [ext_resource type="Script" path="res://Source/Player.cs" id="1_tmg8i"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fclfi"]
-radius = 15.0
-height = 52.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qu3g"]
 corner_radius_top_left = 1024
@@ -12,24 +8,52 @@ corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n2d2"]
+bg_color = Color(0.6, 0.6, 1, 1)
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fclfi"]
+radius = 15.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61457"]
+radius = 15.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4lfih"]
-radius = 15.5
-height = 52.0
+radius = 15.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n3i4"]
+radius = 15.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_tmg8i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_fclfi")
-
 [node name="Panel" type="Panel" parent="."]
 offset_left = -15.0
-offset_top = -26.0
+offset_top = -30.0
 offset_right = 15.0
-offset_bottom = 27.0
+offset_bottom = 30.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4qu3g")
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+offset_left = -15.0
+offset_right = 15.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2n2d2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fclfi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_61457")
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -41,8 +65,13 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-0.5, 1)
 shape = SubResource("CapsuleShape2D_4lfih")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_2n3i4")
+disabled = true
 debug_color = Color(1, 0.6, 0.701961, 0.419608)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnAreaDetected"]

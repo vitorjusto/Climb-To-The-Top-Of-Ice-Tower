@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using Godot;
 
 namespace IceGame.Source
@@ -48,20 +47,34 @@ namespace IceGame.Source
             if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
                 velocity.Y = JumpVelocity;
 
-            // Get the input direction and handle the movement/deceleration.
-            // As good practice, you should replace UI actions with custom gameplay actions.
+
+            var downButtonPressed = Input.IsActionPressed("Down");
+
+            HandleCrouching(downButtonPressed);
+
             Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            if (direction != Vector2.Zero)
-            {
+
+            if(!downButtonPressed && direction != Vector2.Zero)
                 velocity.X = direction.X * Speed;
-            }
             else
                 velocity.X = 0;
-
+                
             velocity.X = Mathf.MoveToward(Velocity.X, velocity.X, 5);
 
             Velocity = velocity;
             MoveAndSlide();
+        }
+
+        private void HandleCrouching(bool downButtonPressed)
+        {
+            GetNode<Panel>("Panel").Visible = !downButtonPressed;
+            GetNode<Panel>("Panel2").Visible = downButtonPressed;
+
+            GetNode<CollisionShape2D>("CollisionShape2D").Disabled = downButtonPressed;
+            GetNode<CollisionShape2D>("CollisionShape2D2").Disabled = !downButtonPressed;
+
+            GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D").Disabled = downButtonPressed;
+            GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D2").Disabled = !downButtonPressed;
         }
 
         private void HandleDebugControls()
