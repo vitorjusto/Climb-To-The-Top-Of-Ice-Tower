@@ -20,6 +20,8 @@ namespace IceGame.Source.States
 
         public bool Process(double delta)
         {
+            
+            _player.GetNode<Camera2D>("Camera2D").Offset = new Vector2(0, 0);
             _manager.CurrentLevel?.CallDeferred("queue_free");
             var scene = GD.Load<PackedScene>(LevelData.LevelPath);
             var level = scene.Instantiate<Node2D>();

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgdfavet6q15q"]
+[gd_scene load_steps=18 format=3 uid="uid://dgdfavet6q15q"]
 
 [ext_resource type="PackedScene" uid="uid://buvcnqoc57y7c" path="res://Scenes/Tiles/Tiles.tscn" id="1_el1o1"]
 [ext_resource type="PackedScene" uid="uid://bv0dr2ay7k82r" path="res://Scenes/Spawner.tscn" id="2_s0tnm"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://jhml08xxbe00" path="res://Scenes/CameraBlocker.tscn" id="7_pp537"]
 [ext_resource type="PackedScene" uid="uid://cymwkbpcpxyso" path="res://Scenes/Warpzone.tscn" id="8_ncdug"]
 [ext_resource type="PackedScene" uid="uid://c78cq0bd1h2ie" path="res://Scenes/FragileBlock.tscn" id="9_mpfc1"]
-[ext_resource type="PackedScene" uid="uid://d1nhqpcf08e3b" path="res://Scenes/Enemies/IceWizard.tscn" id="10_827px"]
 
 [sub_resource type="Curve2D" id="Curve2D_udcuc"]
 _data = {
@@ -71,6 +70,10 @@ Id = 1
 [node name="Spawner3" parent="." instance=ExtResource("2_s0tnm")]
 position = Vector2(3584, -3576)
 Id = 2
+
+[node name="Spawner4" parent="." instance=ExtResource("2_s0tnm")]
+position = Vector2(-56, -5416)
+Id = 3
 
 [node name="Door" parent="." instance=ExtResource("3_6rrak")]
 position = Vector2(13444, -3426)
@@ -394,6 +397,14 @@ Path = "res://Scenes/Levels/Act3.tscn"
 position = Vector2(168, -2059.5)
 shape = SubResource("RectangleShape2D_koxts")
 
+[node name="Warpzone3" parent="." instance=ExtResource("8_ncdug")]
+position = Vector2(3680, -1600)
+Path = "res://Scenes/Levels/Act4.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warpzone3"]
+position = Vector2(-4016, -3872)
+shape = SubResource("RectangleShape2D_koxts")
+
 [node name="FragileBlock" parent="." instance=ExtResource("9_mpfc1")]
 position = Vector2(1328, -3520)
 
@@ -666,6 +677,3 @@ position = Vector2(1136, -3520)
 
 [node name="FragileBlock8" parent="." instance=ExtResource("9_mpfc1")]
 position = Vector2(1104, -3520)
-
-[node name="IceWizard" parent="." instance=ExtResource("10_827px")]
-position = Vector2(2704, -3576)

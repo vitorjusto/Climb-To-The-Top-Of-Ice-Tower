@@ -8,7 +8,7 @@ namespace IceGame.Source
     {
         private StateHandler _deathLoadHandler;
         private StateHandler _levelTransitionHandler;
-        private readonly LevelSpwanData _spawnData = new(0, "res://Scenes/Levels/Act1.tscn");
+        private readonly LevelSpwanData _spawnData = new(0, "res://Scenes/Levels/Act4.tscn");
         public Node2D CurrentLevel;
 
         private static LevelManager _manager;
@@ -21,7 +21,7 @@ namespace IceGame.Source
             var list1 = new List<IState>()
             {
                 new ScreenTransitionStartState(GetNode<Panel>("CanvasLayer/Panel")),
-                new LevelLoadState(new LevelSpwanData(2, "res://Scenes/Levels/Act2.tscn"), this),
+                new LevelLoadState(new LevelSpwanData(0, "res://Scenes/Levels/Act4.tscn"), this),
                 new ScreenTransitionEndingState(GetNode<Panel>("CanvasLayer/Panel"))
 
             };

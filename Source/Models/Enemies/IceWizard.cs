@@ -24,10 +24,10 @@ namespace IceGame.Source.Models.Enemies
         {
             _timer += (float)delta * 60;
 
-            if (_timer < 100)
+            if (_timer < 150)
                 return;
 
-            _timer -= 100;
+            _timer -= 150;
 
             var instance = _projectileScene.Instantiate<Node2D>();
 
