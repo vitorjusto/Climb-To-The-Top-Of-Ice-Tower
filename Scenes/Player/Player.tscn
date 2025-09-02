@@ -1,51 +1,83 @@
-[gd_scene load_steps=8 format=3 uid="uid://p4vutke6tuxf"]
+[gd_scene load_steps=13 format=3 uid="uid://p4vutke6tuxf"]
 
 [ext_resource type="Script" path="res://Source/Player.cs" id="1_tmg8i"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qu3g"]
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n2d2"]
-bg_color = Color(0.6, 0.6, 1, 1)
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
+[ext_resource type="Texture2D" uid="uid://bt66pio5db5ce" path="res://Assets/Player.png" id="2_j3ay0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fclfi"]
-radius = 15.0
+radius = 12.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61457"]
-radius = 15.0
+radius = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4lfih"]
-radius = 15.0
+radius = 12.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n3i4"]
-radius = 15.0
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dslx"]
+atlas = ExtResource("2_j3ay0")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5tas"]
+atlas = ExtResource("2_j3ay0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxgdq"]
+atlas = ExtResource("2_j3ay0")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2p14"]
+atlas = ExtResource("2_j3ay0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve8v4"]
+atlas = ExtResource("2_j3ay0")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_va75i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dslx")
+}],
+"loop": true,
+"name": &"Crouching",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5tas")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxgdq")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2p14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve8v4")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_tmg8i")
-
-[node name="Panel" type="Panel" parent="."]
-offset_left = -15.0
-offset_top = -30.0
-offset_right = 15.0
-offset_bottom = 30.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4qu3g")
-
-[node name="Panel2" type="Panel" parent="."]
-visible = false
-offset_left = -15.0
-offset_right = 15.0
-offset_bottom = 30.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2n2d2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fclfi")
@@ -73,6 +105,14 @@ position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_2n3i4")
 disabled = true
 debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_va75i")
+animation = &"Idle"
+frame_progress = 0.256372
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnAreaDetected"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnBodyDetected"]

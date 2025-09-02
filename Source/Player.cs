@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using IceGame.Source.Enums;
 
 namespace IceGame.Source
 {
@@ -11,11 +12,13 @@ namespace IceGame.Source
 
         private static Player _player;
         private bool _isDebug = false;
+        private AnimatedSprite2D _aniSprite;
         public static Player GetPlayer()
             => _player;
 
         public override void _Ready()
         {
+            _aniSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
             _player = this;
         }
 
@@ -50,7 +53,6 @@ namespace IceGame.Source
             if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
                 velocity.Y = JumpVelocity;
 
-
             var downButtonPressed = Input.IsActionPressed("Down");
 
             HandleCrouching(downButtonPressed);
@@ -58,9 +60,29 @@ namespace IceGame.Source
             Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
             if(!downButtonPressed && direction != Vector2.Zero)
+            {
+                if(!IsOnFloor())
+                    _aniSprite.Play("Jump");
+                else
+                    _aniSprite.Play("Walk");
+
                 velocity.X = direction.X * Speed;
+            }
             else
+            {
+                if(downButtonPressed)
+                    _aniSprite.Play("Crouching");
+                else if(!IsOnFloor())
+                    _aniSprite.Play("Jump");
+                else
+                    _aniSprite.Play("Idle");
                 velocity.X = 0;
+            }
+            
+            if(direction.X > 0)
+                _aniSprite.Scale = new Vector2(2, 2);
+            else if(direction.X < 0)
+                _aniSprite.Scale = new Vector2(-2, 2);
                 
             velocity.X = Mathf.MoveToward(Velocity.X, velocity.X, 5);
 
@@ -70,9 +92,6 @@ namespace IceGame.Source
 
         private void HandleCrouching(bool downButtonPressed)
         {
-            GetNode<Panel>("Panel").Visible = !downButtonPressed;
-            GetNode<Panel>("Panel2").Visible = downButtonPressed;
-
             GetNode<CollisionShape2D>("CollisionShape2D").Disabled = downButtonPressed;
             GetNode<CollisionShape2D>("CollisionShape2D2").Disabled = !downButtonPressed;
 
