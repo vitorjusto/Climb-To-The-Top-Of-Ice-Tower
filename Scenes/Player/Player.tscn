@@ -112,7 +112,7 @@ position = Vector2(0, -2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_va75i")
 animation = &"Idle"
-frame_progress = 0.256372
+frame_progress = 0.530645
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnAreaDetected"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnBodyDetected"]

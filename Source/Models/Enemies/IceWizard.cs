@@ -6,6 +6,7 @@ namespace IceGame.Source.Models.Enemies
     {
         private Node2D _leftAnchor;
         private Node2D _rightAnchor;
+        private Node2D _sprite;
         private PackedScene _projectileScene;
         private Player _player;
         private float _timer;
@@ -14,6 +15,7 @@ namespace IceGame.Source.Models.Enemies
         {
             _leftAnchor = GetNode<Node2D>("LeftAnchor");
             _rightAnchor = GetNode<Node2D>("RightAnchor");
+            _sprite = GetNode<Node2D>("IceWizard");
 
             _projectileScene = GD.Load<PackedScene>("res://Scenes/Enemies/IceWizardProjectile.tscn");
 
@@ -23,6 +25,11 @@ namespace IceGame.Source.Models.Enemies
         public override void _PhysicsProcess(double delta)
         {
             _timer += (float)delta * 60;
+
+            if (_player.Position.X > Position.X)
+                _sprite.Scale = new Vector2(2, 2);
+            else
+                _sprite.Scale = new Vector2(-2, 2);
 
             if (_timer < 150)
                 return;
