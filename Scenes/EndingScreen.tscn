@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct3jn6qc20dqf"]
+
+[ext_resource type="FontFile" uid="uid://xvwxwntg8qha" path="res://Assets/Fonts/CTTTOTITAGTIC.ttf" id="1_cy2yh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s3p"]
+bg_color = Color(0.196078, 0.196078, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qu2n6"]
+font = ExtResource("1_cy2yh")
+font_size = 64
+
+[node name="EndingScreen" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -920.0
+offset_top = -736.0
+offset_right = 1768.0
+offset_bottom = 1160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6s3p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -268.0
+offset_top = 120.0
+offset_right = 1400.0
+offset_bottom = 484.0
+text = "CONGLATURATIONS
+
+
+
+YOU FOUND THE LEGENDARY ICE CUBE
+
+
+NOW YOU CAN DRINK A COLD SODA.
+"
+label_settings = SubResource("LabelSettings_qu2n6")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 322)
+zoom = Vector2(1.645, 1.645)
