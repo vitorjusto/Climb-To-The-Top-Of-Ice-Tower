@@ -20,6 +20,8 @@ namespace IceGame.Source.States
 
         public void Start()
         {
+            Player.GetPlayer().EnableMove = false;
+            Player.GetPlayer().Visible = false;
         }
     }
 }

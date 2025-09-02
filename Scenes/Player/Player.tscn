@@ -63,6 +63,11 @@ animations = [{
 "name": &"Jump",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"NoTexture",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k2p14")
@@ -111,8 +116,7 @@ texture_filter = 1
 position = Vector2(0, -2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_va75i")
-animation = &"Idle"
-frame_progress = 0.530645
+animation = &"NoTexture"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnAreaDetected"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnBodyDetected"]

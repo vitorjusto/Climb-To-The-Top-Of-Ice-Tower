@@ -30,6 +30,8 @@ namespace IceGame.Source.States
 
         public void Start()
         {
+            Player.GetPlayer().EnableMove = true;
+            Player.GetPlayer().Visible = true;
         }
     }
 }

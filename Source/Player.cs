@@ -12,6 +12,7 @@ namespace IceGame.Source
 
         private static Player _player;
         private bool _isDebug = false;
+        public bool EnableMove = true;
         private AnimatedSprite2D _aniSprite;
         public static Player GetPlayer()
             => _player;
@@ -43,6 +44,13 @@ namespace IceGame.Source
             if(Input.IsActionJustPressed("AutoDeath"))
                 LevelManager.GetManager().StartDeathTransition();
 #endif
+            if(!EnableMove)
+            {
+                Velocity = Vector2.Zero;
+                MoveAndSlide();
+                return;
+            }
+
             Vector2 velocity = Velocity;
 
             // Add the gravity.
@@ -83,7 +91,7 @@ namespace IceGame.Source
                 _aniSprite.Scale = new Vector2(2, 2);
             else if(direction.X < 0)
                 _aniSprite.Scale = new Vector2(-2, 2);
-                
+
             velocity.X = Mathf.MoveToward(Velocity.X, velocity.X, 5);
 
             Velocity = velocity;
