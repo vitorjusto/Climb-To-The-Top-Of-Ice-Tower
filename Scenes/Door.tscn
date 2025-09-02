@@ -1,12 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw5j6ekt6w2lq"]
 
 [ext_resource type="Script" path="res://Source/Door.cs" id="1_t6vl3"]
+[ext_resource type="Texture2D" uid="uid://c4neepqvu5okj" path="res://Assets/Objects/Door.png" id="2_calt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv8jx"]
 size = Vector2(96, 136)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j6vu"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_t6vl3")
@@ -16,12 +14,11 @@ script = ExtResource("1_t6vl3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_bv8jx")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -48.0
-offset_top = -68.0
-offset_right = 48.0
-offset_bottom = 68.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2j6vu")
+[node name="Door" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_calt0")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnPlayerEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="OnPlayerExited"]
