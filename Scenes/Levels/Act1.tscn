@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jhml08xxbe00" path="res://Scenes/CameraBlocker.tscn" id="4_4em25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2si3t"]
-size = Vector2(16530, 278)
+size = Vector2(23242, 278)
 
 [node name="Act1" type="Node2D"]
 
@@ -20,7 +20,7 @@ position = Vector2(565, 471)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(8128, 815)
+position = Vector2(11484, 815)
 shape = SubResource("RectangleShape2D_2si3t")
 debug_color = Color(1, 0.6, 0.701961, 0.419608)
 
@@ -31,3 +31,7 @@ Path = "res://Scenes/Levels/Act2.tscn"
 [node name="CameraBlocker" parent="." instance=ExtResource("4_4em25")]
 position = Vector2(394, 636)
 Anchor = 1
+
+[node name="CameraBlocker2" parent="." instance=ExtResource("4_4em25")]
+position = Vector2(-97, 389)
+Anchor = 2

@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://wq5rkyphklqk"]
+[gd_scene load_steps=8 format=3 uid="uid://wq5rkyphklqk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qtkw"]
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
+[ext_resource type="Texture2D" uid="uid://ch0llv7fqp41l" path="res://Assets/Objects/Saw.png" id="1_dc4mu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njgyj"]
-radius = 24.0
+radius = 19.0263
 
 [sub_resource type="Animation" id="Animation_51hnn"]
 resource_name = "new_animation"
@@ -31,26 +27,73 @@ _data = {
 "new_animation": SubResource("Animation_51hnn")
 }
 
+[sub_resource type="Animation" id="Animation_yym2s"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_ovolj"]
+resource_name = "new_animation_2"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwgxw"]
+_data = {
+"new_animation": SubResource("Animation_yym2s"),
+"new_animation_2": SubResource("Animation_ovolj")
+}
+
 [node name="BallInChain" type="Node2D"]
 
 [node name="Node2D" type="CharacterBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
-[node name="Panel" type="Panel" parent="Node2D"]
-offset_left = -24.0
-offset_top = -152.0
-offset_right = 24.0
-offset_bottom = -104.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1qtkw")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
 position = Vector2(0, -128)
 shape = SubResource("CircleShape2D_njgyj")
+
+[node name="Saw" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(0, -128)
+scale = Vector2(2, 2)
+texture = ExtResource("1_dc4mu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "new_animation"
 speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_pwnqv")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Node2D")
+autoplay = "new_animation_2"
+speed_scale = 7.0
+libraries = {
+"": SubResource("AnimationLibrary_rwgxw")
 }

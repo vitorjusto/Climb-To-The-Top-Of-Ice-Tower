@@ -1,23 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcl7m0w50x24w"]
+[gd_scene load_steps=5 format=3 uid="uid://bcl7m0w50x24w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq21j"]
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
+[ext_resource type="Texture2D" uid="uid://ch0llv7fqp41l" path="res://Assets/Objects/Saw.png" id="1_8eu7s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bg8cl"]
 radius = 20.025
 
+[sub_resource type="Animation" id="Animation_yym2s"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwgxw"]
+_data = {
+"new_animation": SubResource("Animation_yym2s")
+}
+
 [node name="Saw" type="CharacterBody2D"]
 collision_layer = 4
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gq21j")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bg8cl")
+
+[node name="Saw" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 2.18228
+scale = Vector2(2, 2)
+texture = ExtResource("1_8eu7s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+speed_scale = 7.0
+libraries = {
+"": SubResource("AnimationLibrary_rwgxw")
+}
