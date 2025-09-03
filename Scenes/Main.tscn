@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://p4vutke6tuxf" path="res://Scenes/Player/Player.tscn" id="1_naugm"]
 [ext_resource type="Script" path="res://Source/LevelManager.cs" id="2_2pvom"]
-[ext_resource type="AudioStream" uid="uid://dykpd2prs4psb" path="res://Assets/Music/ClimbToTheTopOfIceTowerMainAndOnlyTheme - Copia.mp3" id="3_kul4d"]
+[ext_resource type="AudioStream" uid="uid://de4py5r50pvvt" path="res://Assets/Music/ClimbToTheTopOfIceTowerMainAndOnlyTheme.mp3" id="3_b06a7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clri7"]
 bg_color = Color(0, 0, 0, 1)
@@ -26,5 +26,5 @@ offset_bottom = 1900.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_clri7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kul4d")
+stream = ExtResource("3_b06a7")
 autoplay = true
