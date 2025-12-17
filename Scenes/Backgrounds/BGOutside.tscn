@@ -20,7 +20,6 @@ texture = ExtResource("1_85i0i")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.01, 0.01)
-motion_mirroring = Vector2(2735.91, 0)
 
 [node name="Sun" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
 texture_filter = 1
@@ -50,6 +49,12 @@ modulate = Color(0.705882, 0.705882, 0.705882, 1)
 position = Vector2(744, -1211)
 texture = ExtResource("3_dbixf")
 
+[node name="Clouds2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.705882, 0.705882, 0.705882, 1)
+position = Vector2(664, -2192)
+scale = Vector2(1, -1)
+texture = ExtResource("3_dbixf")
+
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 motion_scale = Vector2(0.6, 0.6)
@@ -60,6 +65,12 @@ Speed = Vector2(0.75, 0)
 [node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 modulate = Color(0.862745, 0.862745, 0.862745, 1)
 position = Vector2(766, -1132)
+texture = ExtResource("3_dbixf")
+
+[node name="Clouds2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(0.862745, 0.862745, 0.862745, 1)
+position = Vector2(774, -2082)
+scale = Vector2(1, -1)
 texture = ExtResource("3_dbixf")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -79,6 +90,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 position = Vector2(705, -1146)
+texture = ExtResource("3_dbixf")
+
+[node name="Clouds2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(703, -2066)
+scale = Vector2(1, -1)
 texture = ExtResource("3_dbixf")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]

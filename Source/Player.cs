@@ -110,7 +110,7 @@ namespace IceGame.Source
         private void HandleDebugControls()
         {
             Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            this.Position += direction * 10;
+            this.Position += direction * 20;
         }
 
         public void OnAreaDetected(Area2D area)
