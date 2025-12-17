@@ -26,24 +26,24 @@ namespace IceGame.Source
         public override void _PhysicsProcess(double delta)
         {
 
-// #if DEBUG
-//             //TODO: remove debug mode        
-//             if(Input.IsActionJustPressed("DebugMode"))
-//             {
-//                 _isDebug = !_isDebug;
-//                 GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D").Disabled = _isDebug;
-//                 Velocity = Vector2.Zero;
-//             }
+#if DEBUG
+            //TODO: remove debug mode        
+            if(Input.IsActionJustPressed("DebugMode"))
+            {
+                _isDebug = !_isDebug;
+                GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D").Disabled = _isDebug;
+                Velocity = Vector2.Zero;
+            }
 
-//             if(_isDebug)
-//             {
-//                 HandleDebugControls();
-//                 return;
-//             }
+            if(_isDebug)
+            {
+                HandleDebugControls();
+                return;
+            }
             
-//             if(Input.IsActionJustPressed("AutoDeath"))
-//                 LevelManager.GetManager().StartDeathTransition();
-// #endif
+            if(Input.IsActionJustPressed("AutoDeath"))
+                LevelManager.GetManager().StartDeathTransition();
+#endif
             if(!EnableMove)
             {
                 Velocity = Vector2.Zero;

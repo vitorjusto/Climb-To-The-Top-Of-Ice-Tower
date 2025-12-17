@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlumqbw7fer13"]
+
+[ext_resource type="Texture2D" uid="uid://jfm2uakl3c7d" path="res://Assets/Tiles/bgTiles.png" id="1_c27ti"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmw5i"]
+texture = ExtResource("1_c27ti")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_i8u4p"]
+sources/1 = SubResource("TileSetAtlasSource_dmw5i")
+
+[node name="bgTiles" type="TileMap"]
+modulate = Color(0.901961, 0.901961, 0.901961, 1)
+texture_filter = 1
+tile_set = SubResource("TileSet_i8u4p")
+format = 2

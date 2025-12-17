@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddo2y0harkn6v"]
+[gd_scene load_steps=8 format=3 uid="uid://ddo2y0harkn6v"]
 
 [ext_resource type="PackedScene" uid="uid://buvcnqoc57y7c" path="res://Scenes/Tiles/Tiles.tscn" id="1_6wxt8"]
+[ext_resource type="PackedScene" uid="uid://34kx2a1t3bq" path="res://Scenes/Backgrounds/BGOutside.tscn" id="1_34uhk"]
 [ext_resource type="Texture2D" uid="uid://dhekkbmxwdmad" path="res://Assets/Objects/Sky.png" id="1_758d1"]
 [ext_resource type="PackedScene" uid="uid://bv0dr2ay7k82r" path="res://Scenes/Spawner.tscn" id="2_umlhy"]
 [ext_resource type="PackedScene" uid="uid://dw5j6ekt6w2lq" path="res://Scenes/Door.tscn" id="3_8qd5q"]
@@ -11,9 +12,11 @@ size = Vector2(23242, 278)
 
 [node name="Act1" type="Node2D"]
 
+[node name="BGOutside" parent="." instance=ExtResource("1_34uhk")]
+
 [node name="Sky" type="Sprite2D" parent="."]
-z_index = -4
-position = Vector2(6750, -3436.5)
+z_index = -13
+position = Vector2(9422, 5620)
 scale = Vector2(1368.88, 566.688)
 texture = ExtResource("1_758d1")
 
