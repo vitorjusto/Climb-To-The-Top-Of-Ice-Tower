@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://p4vutke6tuxf"]
+[gd_scene load_steps=14 format=3 uid="uid://p4vutke6tuxf"]
 
 [ext_resource type="Script" path="res://Source/Player.cs" id="1_tmg8i"]
 [ext_resource type="Texture2D" uid="uid://bt66pio5db5ce" path="res://Assets/Player.png" id="2_j3ay0"]
+[ext_resource type="AudioStream" uid="uid://bh66fhouefck2" path="res://Assets/SFX/jump.wav" id="3_kv3ct"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fclfi"]
 radius = 12.0
@@ -80,9 +81,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jumpPlayer")]
 collision_mask = 3
 script = ExtResource("1_tmg8i")
+jumpPlayer = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fclfi")
@@ -117,6 +119,9 @@ position = Vector2(0, -2)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_va75i")
 animation = &"NoTexture"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kv3ct")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="OnAreaDetected"]
 [connection signal="body_entered" from="Hurtbox" to="." method="OnBodyDetected"]

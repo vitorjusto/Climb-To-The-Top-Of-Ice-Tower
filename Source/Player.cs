@@ -6,6 +6,8 @@ namespace IceGame.Source
 {
     public partial class Player : CharacterBody2D
     {
+		[Export]
+		public AudioStreamPlayer jumpPlayer;
         public const float Speed = 1000.0f;
         public const float JumpVelocity = -600.0f;
         public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -59,7 +61,10 @@ namespace IceGame.Source
 
             // Handle Jump.
             if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+			{
+				jumpPlayer.Play(0);
                 velocity.Y = JumpVelocity;
+			}
 
             var downButtonPressed = Input.IsActionPressed("Down");
 
