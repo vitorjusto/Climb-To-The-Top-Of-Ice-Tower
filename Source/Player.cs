@@ -58,7 +58,7 @@ namespace IceGame.Source
                 velocity.Y += gravity * (float)delta;
 
             // Handle Jump.
-            if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+            if (Input.IsActionJustPressed("Jump") && IsOnFloor())
                 velocity.Y = JumpVelocity;
 
             var downButtonPressed = Input.IsActionPressed("Down");
