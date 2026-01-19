@@ -4,7 +4,7 @@ Climb to the to top of the ice tower is an awful good game with terrible great I
 you can play [here](https://vitorjusto.itch.io/climb-to-the-top-of-ice-tower)!!!
 
 ## Objective
-Climb to the top of ice tower
+Climb to the top of the ice tower
 
 ## Controls
 - Left/Right Arrows Key : Move
