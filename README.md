@@ -4,6 +4,9 @@ you can play this game [Here](https://vitorjusto.itch.io/climb-to-the-top-of-ice
 
 Godot 4.1.1 Stable Mono · C# · Solo dev
 
+## Game Concept
+- This game idea came when I was developing ice physics for another game, witch I realise that I can create a game with terrible controls (like Jump King or Getting Over It). The level design play around theses ice physics, like huge gaps jumps or precise jumps in small plataforms.
+
 ## Technical decisions
 
 **Chain Of Responsability**
